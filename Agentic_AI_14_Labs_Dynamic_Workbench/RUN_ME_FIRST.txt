@@ -1,0 +1,76 @@
+AGENTIC AI COURSE ORGANISER — START HERE
+
+A. RUN THE WEB APPLICATION
+1. Extract this ZIP.
+2. Open the extracted Agentic_AI_14_Labs_Dynamic_Workbench folder in VS Code.
+3. Open a terminal in the folder containing course_organizer, agentic_core and requirements.txt.
+4. Run:
+
+   py -m venv .venv
+   .venv\Scripts\activate
+   python -m pip install -r requirements.txt
+   python -m uvicorn course_organizer.main:app --host 127.0.0.1 --port 8002
+
+5. Open http://127.0.0.1:8002/ in your browser.
+
+B. DEMO LOGIN ACCOUNTS
+Student accounts (name and password are the same):
+   student1 | student1@gmail.com | password: student1
+   student2 | student2@gmail.com | password: student2
+   student3 | student3@gmail.com | password: student3
+   student4 | student4@gmail.com | password: student4
+   student5 | student5@gmail.com | password: student5
+
+Professor:
+   professor@gmail.com | password: professor
+
+These are local demonstration credentials only. Change them before any public deployment.
+
+C. RUN ANY OF THE 14 LABS WITH YOUR OWN INPUT
+From the same project-root terminal, run:
+
+   python DEMO_ALL_14_LABS.py
+
+Choose a lab number from 1 to 14, type your own question/input, and inspect the
+actual output, run ID, status and duration. The program does not automatically
+feed fixed scenarios; each run uses the input you type.
+
+Run one selected lab directly:
+   python DEMO_ALL_14_LABS.py --lab 8
+
+Pass your own input on the command line:
+   python DEMO_ALL_14_LABS.py --lab 2 --input "calculate (17 + 5) * 2"
+
+Structured labs (such as reusable skills, memory, connectors, node graph,
+research, governance, engineering and helpdesk) accept JSON actions. The runner
+prints the required input shape when you select the lab.
+
+D. SEED DATA INCLUDED
+The SQLite database is pre-populated with:
+- 5 student accounts and 1 professor account
+- 5 courses: AI, DBMS, Computer Networks, Machine Learning and Cloud Computing
+- 19 course enrolments across the five students
+- 4 course notes
+- 3 assignments
+- 5 submissions for the AI assignment
+- 10 pairwise similarity reports computed from the actual seeded submission text
+- 3 draft grades for professor review, approval and publication
+
+The seed routine is idempotent and is also called at application startup. It does
+not delete existing records. To run it manually:
+   python -m course_organizer.database.seed_demo_data
+
+E. TESTS
+Run the 14-lab dynamic regression suite:
+   python -m unittest discover -s tests -v
+Run the application/database unit tests:
+   python -m unittest discover -v
+
+IMPORTANT
+- Run commands from the project root (where requirements.txt is located).
+- Keep the Uvicorn terminal open while using the browser application.
+- This project uses deterministic local tools by default; optional model routing
+  requires your own API configuration. No API key is bundled.
+- Cloud operations are diagnostic/recommendation only; they do not change real
+  cloud infrastructure. Research uses the configured local evidence corpus and
+  user-supplied sources, not automatic live web crawling.
